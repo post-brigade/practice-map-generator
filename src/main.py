@@ -1,44 +1,16 @@
 import re
 
-from src.functions import generate_note, generate_long_note, generate_chord
+from src.classes import LongNote, Note, TimingPoint
+from src.functions import create_long_note, create_note, create_timing_point, read_map
 
 
 def main():
-    normal_note_pattern = re.compile(r"\d+,\d+,\d+,1,\d,\d:\d:\d:\d{1,3}:")
-    long_note_pattern = re.compile(r"\d+,\d+,\d+,128,\d,\d+,\d:\d:\d:\d{1,3}:")
-    timing_point_pattern = re.compile(r"\d+,-?\d+(?:\.\d+)?,\d{1},\d{1},\d,\d{1,3},\d,\d{1,2}")
+    map_path = "./maps/hazy_moon_night/hazy_test.osu"
+    new_map_path = "./maps/hazy_moon_night/hazy_test_convert.osu"
 
-    map_path = "./maps/hazy_moon_night/hazy_moon_night_7k.osu"
-    new_map_path = "./maps/hazy_moon_night/hazy_moon_night_7k_conversion.osu"
-    with open(map_path) as map, open(new_map_path, "w") as new_map:
-        note_count = -1
-        for line in map:
-            line = line.strip()
+    normal_lines, timing_points, long_notes, notes = read_map(map_path)
 
-            if line == "":
-                new_map.write("\n")
-                continue
-            match_t = timing_point_pattern.search(line)
-            match_n = normal_note_pattern.search(line)
-            match_ln = long_note_pattern.search(line)
-
-            if match_n:
-                note = line
-                note_count += 1
-                # if note_count % 4 == 0:
-                #     generate_chord(note)
-                #     continue
-                new_note = generate_note(note)
-                new_map.write(f"{new_note}\n")
-            elif match_ln:
-                note = line
-                new_note = generate_note(note)
-                new_map.write(f"{new_note}\n")
-            elif match_t:
-                new_map.write(f"{line}\n")
-            else:
-                new_map.write(f"{line}\n")
-
+    print(timing_points)
 
 
 if __name__ == "__main__":

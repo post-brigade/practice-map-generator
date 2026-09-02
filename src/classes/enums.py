@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class 7kColumn(Enum):
+class SevenKeyColumn(Enum):
     ONE = 36
     TWO = 109
     THREE = 182
