@@ -22,7 +22,8 @@ def main():
                 match_ln = long_note_pattern.search(line)
 
                 if match_n:
-                    note = line
+                    note = line.split(",")
+                    print(note)
                     note_count += 1
                     if note_count % 4 == 0:
                         generate_chord(note)
