@@ -1,7 +1,10 @@
 import re
 
 from src.classes import LongNote, Note, TimingPoint
-from src.functions import create_long_note, create_note, create_timing_point
+
+from .create_long_note import create_long_note
+from .create_note import create_note
+from .create_timing_point import create_timing_point
 
 
 def read_map(map_path: str):
