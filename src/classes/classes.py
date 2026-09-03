@@ -1,6 +1,6 @@
 from typing import override
 
-from .enums import SevenKeyColumn, NoteType
+from .enums import NoteType, SevenKeyColumn
 
 
 class TimingPoint:
@@ -44,6 +44,7 @@ class Note:
         line_number: int
     ):
         self.column = column
+        self.column_number: int = (column * 7 // 512) + 1
         self.y = y
         self.time = time
         self.type = type
@@ -51,7 +52,7 @@ class Note:
 
     @override
     def __repr__(self):
-        return f"normal note: column:{self.column} time: {self.time}"
+        return f"normal note: column:{self.column_number} time: {self.time}"
 
 
 class LongNote(Note):
@@ -70,7 +71,7 @@ class LongNote(Note):
 
     @override
     def __repr__(self):
-        return f"long note: column:{self.column} time: {self.time} end time: {self.end_time}"
+        return f"long note: column:{self.column_number} time: {self.time} end time: {self.end_time}"
 
 
 class chord:
