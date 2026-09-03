@@ -1,17 +1,33 @@
 import re
 
 from src.classes import LongNote, Note, TimingPoint
-from src.functions import create_long_note, create_note, create_timing_point, read_map, get_timing_changes
+from src.functions import (
+    create_long_note,
+    create_note,
+    create_timing_point,
+    get_timing_changes,
+    group_notes_by_timing_changes,
+    read_map,
+)
 
 
 def main():
-    map_path = "./maps/hazy_moon_night/hazy_test.osu"
+    map_path = "./maps/hazy_moon_night/hazy_moon_night_7k.osu"
     new_map_path = "./maps/hazy_moon_night/hazy_test_convert.osu"
 
     normal_lines, timing_points, notes = read_map(map_path)
 
     timing_changes = get_timing_changes(timing_points)
     start_time = timing_changes[0].time
+
+    timing_note_groups = group_notes_by_timing_changes(notes, timing_changes)
+    change_index = 0
+
+    for note_group in timing_note_groups:
+        print(timing_changes[change_index])
+        change_index += 1
+        if note_group:
+            print(note_group[0])
 
     print(start_time)
 
