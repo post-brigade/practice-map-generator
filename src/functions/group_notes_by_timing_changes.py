@@ -29,7 +29,7 @@ def group_notes_by_timing_changes(
                     note_index += 1
                     continue
 
-        for note in notes[note_index:]:
-            timing_groups[i].append(note)
+    for note in notes[note_index:]:
+        timing_groups[-1].append(note)
 
     return timing_groups
