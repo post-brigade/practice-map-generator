@@ -1,8 +1,4 @@
-from annotationlib import type_repr
-import inspect
-from operator import methodcaller
-
-from src.classes import Note, LongNote, TimingPoint
+from src.classes import LongNote, Note, TimingPoint
 
 
 def note_to_line(note: Note) -> list [str]:

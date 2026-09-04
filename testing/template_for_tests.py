@@ -1,10 +1,10 @@
 import unittest
+import random
 
 
-class Test(unittest.TestCase):
-    def test(self):
-        print("\n")
+def main()
 
+    print("hey")
 
 if __name__ == "__main__":
     unittest.main()
