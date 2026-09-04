@@ -1,12 +1,6 @@
 from src.classes import LongNote, Note
 
 
-def create_row(is_barline: bool) -> list[str]:
-    column = "▁▁▁▁▁" if is_barline else "     "
-    row = [column for _ in range]
-
-
-
 def generate_note_matrix(notes: list[Note | LongNote], key_count: int = 7):
     if not notes:
         return
