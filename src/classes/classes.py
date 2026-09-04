@@ -13,7 +13,7 @@ class TimingPoint:
         volume: int,
         uninherited: int,
         effects: int,
-        line_number: int
+        line_number: str
     ):
         self.time = time
         self.beat_length = beat_length
@@ -24,35 +24,42 @@ class TimingPoint:
         self.uninherited = uninherited
         self.effects = effects
         self.bpm: float = 1 / beat_length * 1000 * 60
+        self.line_number = line_number
+
+        self.timing_group: int | None = None
 
     @override
     def __repr__(self):
         if self.uninherited == 1:
-                return f"timing point: time:{round(self.time)} bpm: {round(self.bpm, 2)} meter: {self.meter} beat length: {round(self.beat_length)}"
+                return f"timing point: group: {self.timing_group} time:{round(self.time)} bpm: {round(self.bpm, 2)} meter: {self.meter} beat length: {round(self.beat_length)}"
         else:
             return f"timing point: time:{round(self.time)} meter: {self.meter}"
 
 
 class Note:
     def __init__(self,
-        column: int,
+        x: int,
         y: int,
         time: int,
         type: int,
         hit_sound: int,
         hit_sample: str,
-        line_number: int
+        line_number: str
     ):
-        self.column = column
-        self.column_number: int = (column * 7 // 512) + 1
+        self.x = x
+        self.column: int = (x * 7 // 512) + 1
         self.y = y
         self.time = time
         self.type = type
         self.hit_sound = hit_sound
+        self.hit_sample = hit_sample
+        self.line_number = str(line_number)
+
+        self.timing_group: int | None = None
 
     @override
     def __repr__(self):
-        return f"normal note: column:{self.column_number} time: {self.time}"
+        return f"normal note: group: {self.timing_group} column:{self.column} time: {self.time}"
 
 
 class LongNote(Note):
@@ -64,14 +71,14 @@ class LongNote(Note):
         hit_sound: int,
         end_time: int,
         hit_sample: str,
-        line_number: int
+        line_number: str
     ):
         super().__init__(x, y, time, type, hit_sound, hit_sample, line_number)
         self.end_time = end_time
 
     @override
     def __repr__(self):
-        return f"long note: column:{self.column_number} time: {self.time} end time: {self.end_time}"
+        return f"long note: group: {self.timing_group} column:{self.column} time: {self.time} end time: {self.end_time}"
 
 
 class chord:

@@ -8,7 +8,7 @@ def create_note(note_list: list[str]) -> Note:
     note_type = int(note_list[3])
     hit_sound = int(note_list[4])
     hit_sample = note_list[5]
-    line_num = int(note_list[6])
+    line_num = str(note_list[6])
     new_note = Note(
         column,
         y,

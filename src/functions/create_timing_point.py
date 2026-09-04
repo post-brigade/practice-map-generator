@@ -9,7 +9,7 @@ def create_timing_point(timing_point_list: list[str]) -> TimingPoint:
     volume = int(timing_point_list[5])
     uninherited = int(timing_point_list[6])
     effects = int(timing_point_list[7])
-    line_number = int(timing_point_list[8])
+    line_number = str(timing_point_list[8])
 
     new_timing_point = TimingPoint(
         time,

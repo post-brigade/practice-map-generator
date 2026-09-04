@@ -47,4 +47,11 @@ def read_map(map_path: str) -> tuple[list[list[str]], list[TimingPoint], list[No
             else:
                 normal_lines.append(line_split)
 
+            notes = sorted(
+                notes,
+                key = lambda notes: (
+                    notes.time,
+                    notes.column
+                )
+            )
         return normal_lines, timing_points, notes

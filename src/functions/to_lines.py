@@ -1,0 +1,77 @@
+from annotationlib import type_repr
+import inspect
+from operator import methodcaller
+
+from src.classes import Note, LongNote, TimingPoint
+
+
+def note_to_line(note: Note) -> list [str]:
+    x = str(note.x)
+    y = str(note.y)
+    time = str(note.time)
+    type = str(note.type)
+    hit_sound = str(note.hit_sound)
+    hit_sample = note.hit_sample
+    line_number = str(note.line_number)
+
+    note_line = [
+        x, y, time, type, hit_sound, hit_sample, line_number
+    ]
+    return note_line
+
+
+def long_note_to_line(note: LongNote) -> list [str]:
+    x = str(note.x)
+    y = str(note.y)
+    time = str(note.time)
+    type = str(note.type)
+    hit_sound = str(note.hit_sound)
+    end_time = str(note.end_time)
+    hit_sample = note.hit_sample
+    line_number = str(note.line_number)
+
+    note_line = [
+        x, y, time, type, hit_sound, end_time, hit_sample, line_number
+    ]
+    return note_line
+
+
+def timing_point_to_line(timing_point: TimingPoint) -> list[str]:
+    time = str(timing_point.time)
+    beat_length = str(timing_point.beat_length)
+    meter = str(timing_point.meter)
+    sample_set = str(timing_point.sample_set)
+    sample_index = str(timing_point.sample_index)
+    volume = str(timing_point.volume)
+    uninherited = str(timing_point.uninherited)
+    effects = str(timing_point.effects)
+    line_number = timing_point.line_number
+
+    timing_point_line = [
+        time, beat_length, meter, sample_set, sample_index, volume, uninherited, effects, line_number
+    ]
+    return timing_point_line
+
+
+def to_lines(notes_points: list[Note | LongNote | TimingPoint]):
+    line_list: list[list[str]] = []
+
+    for note_or_point in notes_points:
+
+        match note_or_point:
+            case LongNote():
+                long_note_line = long_note_to_line(note_or_point)
+                line_list.append(long_note_line)
+
+            case Note():
+                note_line = note_to_line(note_or_point)
+                line_list.append(note_line)
+
+            case TimingPoint():
+                timing_point_line = timing_point_to_line(note_or_point)
+                line_list.append(timing_point_line)
+
+            case _:
+                raise TypeError
+
+    return line_list

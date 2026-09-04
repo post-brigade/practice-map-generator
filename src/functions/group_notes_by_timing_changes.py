@@ -19,17 +19,19 @@ def group_notes_by_timing_changes(
         note_index += 1
 
     for i in range(len(timing_changes)):
-
+        timing_changes[i].timing_group = i
         if i < len(timing_changes) - 1:
             for note in notes[note_index:]:
                 if note.time >= timing_changes[i + 1].time:
                     break
                 if note.time >= timing_changes[i].time:
+                    note.timing_group = i
                     timing_groups[i].append(note)
                     note_index += 1
                     continue
 
     for note in notes[note_index:]:
+        note.timing_group = len(timing_changes)-1
         timing_groups[-1].append(note)
 
     return timing_groups
