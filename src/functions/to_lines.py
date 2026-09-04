@@ -53,7 +53,7 @@ def timing_point_to_line(timing_point: TimingPoint) -> list[str]:
     return timing_point_line
 
 
-def to_lines(notes_points: list[Note | LongNote | TimingPoint]):
+def to_lines(notes_points: list[Note | LongNote] | list[TimingPoint]):
     line_list: list[list[str]] = []
 
     for note_or_point in notes_points:
