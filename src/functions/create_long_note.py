@@ -9,7 +9,7 @@ def create_long_note(note_list: list[str]) -> LongNote:
     hit_sound = int(note_list[4])
     end_time = int(note_list[5])
     hit_sample = note_list[6]
-    line_num = str(note_list[7])
+
     new_note = LongNote(
         column,
         y,
@@ -18,6 +18,6 @@ def create_long_note(note_list: list[str]) -> LongNote:
         hit_sound,
         end_time,
         hit_sample,
-        line_num,
+
     )
     return new_note

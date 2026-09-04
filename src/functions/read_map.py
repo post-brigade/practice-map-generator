@@ -20,13 +20,11 @@ def read_map(map_path: str) -> tuple[list[list[str]], list[TimingPoint], list[No
     with open(map_path) as map:
 
         for line in map:
-            line_count += 1
             line_stripped = line.strip()
             line_split = line_stripped.split(",")
-            line_split.append(str(line_count))
 
             if line == "":
-                normal_lines.append([line, str(line_count)])
+                normal_lines.append([line])
                 continue
             match_t = timing_point_pattern.search(line)
             match_n = normal_note_pattern.search(line)

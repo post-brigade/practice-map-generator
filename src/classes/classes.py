@@ -13,7 +13,6 @@ class TimingPoint:
         volume: int,
         uninherited: int,
         effects: int,
-        line_number: str
     ):
         self.time = time
         self.beat_length = beat_length
@@ -24,7 +23,6 @@ class TimingPoint:
         self.uninherited = uninherited
         self.effects = effects
         self.bpm: float = 1 / beat_length * 1000 * 60
-        self.line_number = line_number
 
         self.timing_group: int | None = None
 
@@ -44,7 +42,6 @@ class Note:
         type: int,
         hit_sound: int,
         hit_sample: str,
-        line_number: str
     ):
         self.x = x
         self.column: int = (x * 7 // 512) + 1
@@ -53,7 +50,6 @@ class Note:
         self.type = type
         self.hit_sound = hit_sound
         self.hit_sample = hit_sample
-        self.line_number = str(line_number)
 
         self.timing_group: int | None = None
 
@@ -71,9 +67,8 @@ class LongNote(Note):
         hit_sound: int,
         end_time: int,
         hit_sample: str,
-        line_number: str
     ):
-        super().__init__(x, y, time, type, hit_sound, hit_sample, line_number)
+        super().__init__(x, y, time, type, hit_sound, hit_sample)
         self.end_time = end_time
 
     @override

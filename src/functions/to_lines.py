@@ -12,10 +12,9 @@ def note_to_line(note: Note) -> list [str]:
     type = str(note.type)
     hit_sound = str(note.hit_sound)
     hit_sample = note.hit_sample
-    line_number = str(note.line_number)
 
     note_line = [
-        x, y, time, type, hit_sound, hit_sample, line_number
+        x, y, time, type, hit_sound, hit_sample
     ]
     return note_line
 
@@ -28,10 +27,9 @@ def long_note_to_line(note: LongNote) -> list [str]:
     hit_sound = str(note.hit_sound)
     end_time = str(note.end_time)
     hit_sample = note.hit_sample
-    line_number = str(note.line_number)
 
     note_line = [
-        x, y, time, type, hit_sound, end_time, hit_sample, line_number
+        x, y, time, type, hit_sound, end_time, hit_sample
     ]
     return note_line
 
@@ -45,10 +43,9 @@ def timing_point_to_line(timing_point: TimingPoint) -> list[str]:
     volume = str(timing_point.volume)
     uninherited = str(timing_point.uninherited)
     effects = str(timing_point.effects)
-    line_number = timing_point.line_number
 
     timing_point_line = [
-        time, beat_length, meter, sample_set, sample_index, volume, uninherited, effects, line_number
+        time, beat_length, meter, sample_set, sample_index, volume, uninherited, effects
     ]
     return timing_point_line
 

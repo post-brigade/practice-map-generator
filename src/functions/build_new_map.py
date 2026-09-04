@@ -11,22 +11,25 @@ def build_new_map(
     timing_point_lines = to_lines(timing_points)
     note_lines = to_lines(notes)
     new_lines = []
+
     for line in normal_lines:
         if line[0].lower() == "[TimingPoints]".lower():
             new_lines.append(line)
             for timing_point_line in timing_point_lines:
                 new_lines.append(timing_point_line)
+
         elif line[0].lower() == "[HitObjects]".lower():
             new_lines.append(line)
+
             for note_line in note_lines:
                 new_lines.append(note_line)
+
         else:
             new_lines.append(line)
 
     joined_lines : list[str] = []
 
     for line in new_lines:
-        line.pop()
         joined_lines.append(",".join(line))
 
     map = "\n".join(joined_lines)
