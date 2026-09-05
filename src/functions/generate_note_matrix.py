@@ -23,11 +23,11 @@ def generate_note_matrix(notes: list[Note | LongNote], key_count: int = 7):
     is_barline = time_index % 8 == 0
     note_matrix = [create_row(is_barline)]
     note = " ▆▆▆ "
+    note_tail = "▃▃▃"
     barline_note = f"{GRAY}▁{RESET}▆▆▆{GRAY}▁{RESET}"
 
     for i in range(len(notes)):
         current_note = notes[i]
-        is_long_note = current_note == LongNote
         note_matrix[time_index][current_note.column - 1] = barline_note if is_barline else note
 
         if i < len(notes) - 1 and current_note.time != notes[i + 1].time:

@@ -5,6 +5,7 @@ from .create_timing_point import create_timing_point
 from .generate_note_matrix import generate_note_matrix
 from .get_timing_changes import get_timing_changes
 from .group_notes_by_timing_changes import group_notes_by_timing_changes
+from .randomize_notes import randomize_notes
 from .read_map import read_map
 from .to_lines import to_lines
 from .write_map import write_map

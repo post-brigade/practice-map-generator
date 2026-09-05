@@ -9,6 +9,7 @@ from src.functions import (
     generate_note_matrix,
     get_timing_changes,
     group_notes_by_timing_changes,
+    randomize_notes,
     read_map,
     to_lines,
     write_map,
@@ -20,15 +21,15 @@ def main():
     new_map_path = "./maps/hazy_moon_night/hazy_test_output.osu"
 
     normal_lines, timing_points, notes = read_map(map_path)
+    random_notes = randomize_notes(notes)
 
-    generate_note_matrix(notes)
+    generate_note_matrix(random_notes)
 
     timing_changes = get_timing_changes(timing_points)
-    start_time = timing_changes[0].time
 
-    timing_note_groups = group_notes_by_timing_changes(notes, timing_changes)
+    timing_note_groups = group_notes_by_timing_changes(random_notes, timing_changes)
 
-    new_map = build_new_map(normal_lines, timing_points, notes)
+    new_map = build_new_map(normal_lines, timing_points, random_notes)
 
     write_map(new_map, new_map_path)
 
