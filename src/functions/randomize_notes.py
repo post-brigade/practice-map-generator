@@ -1,15 +1,7 @@
-import random
-
 from src.classes import LongNote, Note, TimingPoint
 
 from .column_to_x import column_to_x
-
-
-def random_except(start, stop, excluded):
-    allowed = [n for n in range(start, stop + 1) if n not in excluded]
-    if not allowed:
-        raise ValueError("No allowed values")
-    return random.choice(allowed)
+from .random_except import random_except
 
 
 def randomize_notes(notes: list[Note | LongNote]) -> list[Note | LongNote]:
