@@ -1,7 +1,7 @@
 from src.classes import LongNote, Note, TimingPoint
 
 from .column_to_x import column_to_x
-from .random_except import random_except
+from .random_column import random_column
 
 
 def randomize_notes(notes: list[Note | LongNote]) -> list[Note | LongNote]:
@@ -24,7 +24,7 @@ def randomize_notes(notes: list[Note | LongNote]) -> list[Note | LongNote]:
         if i > 0:
             banned_columns.add(notes_no_chords[i - 1].column)
 
-        current_note.column = random_except(1, 7, banned_columns)
+        current_note.column = random_column(1, 7, banned_columns)
         current_note.x = column_to_x(current_note.column)
         random_notes.append(current_note)
 

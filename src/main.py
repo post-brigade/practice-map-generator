@@ -23,7 +23,9 @@ def main():
 
     normal_lines, timing_points, notes = read_map(map_path)
     random_notes = randomize_notes(notes)
+
     notes_with_chords = add_chords(random_notes)
+
     generate_note_matrix(notes_with_chords)
 
     # will probably need later

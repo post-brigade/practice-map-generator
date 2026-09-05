@@ -1,4 +1,5 @@
-from src.classes import Note, LongNote, TimingPoint
+from src.classes import LongNote, Note, TimingPoint
+
 
 def group_notes_by_timing_changes(
     notes: list[Note | LongNote],

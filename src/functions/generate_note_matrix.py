@@ -16,14 +16,17 @@ def generate_note_matrix(notes: list[Note | LongNote], key_count: int = 7):
         return row
 
     GRAY = rgb_to_console_color(100,100,100)
-    NEON_BLUE = rgb_to_console_color(0, 200, 255)
     RESET = "\033[0m"
 
     time_index = 0
     is_barline = time_index % 8 == 0
     note_matrix = [create_row(is_barline)]
     note = " ▆▆▆ "
-    note_tail = "▃▃▃"
+
+    # for long notes
+    # note_length = " ███ "
+    # note_tail = "▃▃▃"
+
     barline_note = f"{GRAY}▁{RESET}▆▆▆{GRAY}▁{RESET}"
 
     for i in range(len(notes)):

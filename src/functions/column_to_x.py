@@ -1,5 +1,6 @@
 
 
+
 def column_to_x(column: int) -> int:
 
     match column:
@@ -20,8 +21,9 @@ def column_to_x(column: int) -> int:
 
         case 6:
             return 402
+
         case 7:
             return 475
 
         case _:
-            return None
+            raise TypeError("Invalid column number.")
