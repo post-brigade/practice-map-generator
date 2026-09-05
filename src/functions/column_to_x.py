@@ -1,29 +1,9 @@
 
 
 
-def column_to_x(column: int) -> int:
+def column_to_x(column: int, key_count: int) -> int:
+    if column not in range(1, key_count + 1):
+        raise ValueError("Invalid column.")
+    x = ((column - 1) * 512 + 256) // key_count
 
-    match column:
-        case 1:
-            return 36
-
-        case 2:
-            return 109
-
-        case 3:
-            return 182
-
-        case 4:
-            return 258
-
-        case 5:
-            return 329
-
-        case 6:
-            return 402
-
-        case 7:
-            return 475
-
-        case _:
-            raise TypeError("Invalid column number.")
+    return x

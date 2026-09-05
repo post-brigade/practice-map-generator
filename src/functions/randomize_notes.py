@@ -4,7 +4,7 @@ from .column_to_x import column_to_x
 from .random_column import random_column
 
 
-def randomize_notes(notes: list[Note | LongNote]) -> list[Note | LongNote]:
+def randomize_notes(notes: list[Note | LongNote], key_count) -> list[Note | LongNote]:
     notes_no_chords: list[Note | LongNote] = []
 
     for i in range(len(notes)):
@@ -24,8 +24,8 @@ def randomize_notes(notes: list[Note | LongNote]) -> list[Note | LongNote]:
         if i > 0:
             banned_columns.add(notes_no_chords[i - 1].column)
 
-        current_note.column = random_column(1, 7, banned_columns)
-        current_note.x = column_to_x(current_note.column)
+        current_note.column = random_column(banned_columns, key_count)
+        current_note.x = column_to_x(current_note.column, key_count)
         random_notes.append(current_note)
 
     return random_notes

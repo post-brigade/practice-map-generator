@@ -10,7 +10,7 @@ def build_new_map(
 ) -> str:
     timing_point_lines = to_lines(timing_points)
     note_lines = to_lines(notes)
-    new_lines = []
+    new_lines: list[list[str]] = []
 
     for line in normal_lines:
         if line[0].lower() == "[TimingPoints]".lower():

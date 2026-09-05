@@ -4,7 +4,7 @@ from src.classes import LongNote, Note, TimingPoint
 def note_to_line(note: Note) -> list [str]:
     x = str(note.x)
     y = str(note.y)
-    time = str(note.time)
+    time = str(round(note.time))
     type = str(note.type)
     hit_sound = str(note.hit_sound)
     hit_sample = note.hit_sample
@@ -18,7 +18,7 @@ def note_to_line(note: Note) -> list [str]:
 def long_note_to_line(note: LongNote) -> list [str]:
     x = str(note.x)
     y = str(note.y)
-    time = str(note.time)
+    time = str(round(note.time))
     type = str(note.type)
     hit_sound = str(note.hit_sound)
     end_time = str(note.end_time)
@@ -65,6 +65,6 @@ def to_lines(notes_points: list[Note | LongNote] | list[TimingPoint]):
                 line_list.append(timing_point_line)
 
             case _:
-                raise TypeError
+                raise TypeError("Invalid type: not Note or TimingPoint")
 
     return line_list

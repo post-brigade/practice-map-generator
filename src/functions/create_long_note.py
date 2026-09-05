@@ -1,7 +1,7 @@
 from src.classes import LongNote
 
 
-def create_long_note(note_list: list[str]) -> LongNote:
+def create_long_note(note_list: list[str], key_count: int) -> LongNote:
     column = int(note_list[0])
     y = int(note_list[1])
     time = int(note_list[2])
@@ -18,6 +18,7 @@ def create_long_note(note_list: list[str]) -> LongNote:
         hit_sound,
         end_time,
         hit_sample,
+        key_count
 
     )
     return new_note

@@ -1,7 +1,7 @@
 from src.classes import Note
 
 
-def create_note(note_list: list[str | int]) -> Note:
+def create_note(note_list: list[str], key_count: int) -> Note:
     column = int(note_list[0])
     y = int(note_list[1])
     time = int(note_list[2])
@@ -16,5 +16,6 @@ def create_note(note_list: list[str | int]) -> Note:
         type,
         hit_sound,
         hit_sample,
+        key_count
     )
     return new_note

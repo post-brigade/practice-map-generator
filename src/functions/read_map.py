@@ -7,12 +7,11 @@ from .create_note import create_note
 from .create_timing_point import create_timing_point
 
 
-def read_map(map_path: str) -> tuple[list[list[str]], list[TimingPoint], list[Note | LongNote]]:
+def read_map(map_path: str, key_count: int) -> tuple[list[list[str]], list[TimingPoint], list[Note | LongNote]]:
     normal_note_pattern = re.compile(r"\d+,\d+,\d+,1,\d,\d:\d:\d:\d{1,3}:")
     long_note_pattern = re.compile(r"\d+,\d+,\d+,128,\d,\d+,\d:\d:\d:\d{1,3}:")
     timing_point_pattern = re.compile(r"\d+,-?\d+(?:\.\d+)?,\d{1},\d{1},\d,\d{1,3},\d,\d{1,2}")
 
-    line_count = 0
     timing_points: list[TimingPoint] = []
     notes: list[Note | LongNote] = []
     normal_lines: list[list[str]] = []
@@ -31,11 +30,11 @@ def read_map(map_path: str) -> tuple[list[list[str]], list[TimingPoint], list[No
             match_ln = long_note_pattern.search(line)
 
             if match_n:
-                note = create_note(line_split)
+                note = create_note(line_split, key_count)
                 notes.append(note)
 
             elif match_ln:
-                long_note = create_long_note(line_split)
+                long_note = create_long_note(line_split, key_count)
                 notes.append(long_note)
 
             elif match_t:

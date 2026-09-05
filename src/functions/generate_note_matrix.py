@@ -5,7 +5,7 @@ def rgb_to_console_color(r: int, g: int, b: int) -> str:
     return f"\033[38;2;{r};{g};{b}m"
 
 
-def generate_note_matrix(notes: list[Note | LongNote], key_count: int = 7):
+def generate_note_matrix(notes: list[Note | LongNote], key_count: int):
     if not notes:
         return
 

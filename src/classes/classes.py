@@ -1,7 +1,5 @@
 from typing import override
 
-from .enums import NoteType, SevenKeyColumn
-
 
 class TimingPoint:
     def __init__(self,
@@ -38,45 +36,42 @@ class Note:
     def __init__(self,
         x: int,
         y: int,
-        time: int,
+        time: float,
         type: int,
         hit_sound: int,
         hit_sample: str,
+        key_count: int,
     ):
         self.x = x
-        self.column: int = (x * 7 // 512) + 1
+        self.column: int = (x * key_count // 512) + 1
         self.y = y
         self.time = time
         self.type = type
         self.hit_sound = hit_sound
         self.hit_sample = hit_sample
+        self.key_count = key_count
 
         self.timing_group: int | None = None
 
     @override
     def __repr__(self):
-        return f"normal note: group: {self.timing_group} column:{self.column} time: {self.time}"
+        return f"normal note: group: {self.timing_group} column:{self.column} time: {round(self.time)}"
 
 
 class LongNote(Note):
     def __init__(self,
         x: int,
         y: int,
-        time: int,
+        time: float,
         type: int,
         hit_sound: int,
-        end_time: int,
+        end_time: float,
         hit_sample: str,
+        key_count: int,
     ):
-        super().__init__(x, y, time, type, hit_sound, hit_sample)
+        super().__init__(x, y, time, type, hit_sound, hit_sample, key_count)
         self.end_time = end_time
 
     @override
     def __repr__(self):
-        return f"long note: group: {self.timing_group} column:{self.column} time: {self.time} end time: {self.end_time}"
-
-
-class chord:
-    def __init__(self, time: int, notes: list[Note | LongNote]):
-        self.time = time
-        self.notes = notes
+        return f"long note: group: {self.timing_group} column:{self.column} time: {round(self.time)} end time: {round(self.end_time)}"

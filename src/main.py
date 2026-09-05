@@ -1,5 +1,3 @@
-import re
-
 from src.classes import LongNote, Note, TimingPoint
 from src.functions import (
     add_chords,
@@ -18,15 +16,16 @@ from src.functions import (
 
 
 def main():
-    map_path = "./maps/hazy_moon_night/hazy_moon_night_7k.osu"
-    new_map_path = "./maps/hazy_moon_night/hazy_moon_night_7k_conversion.osu"
+    key_count = 7
+    map_path = "./maps/hazy_moon_night/hazy_test.osu"
+    new_map_path = "./maps/hazy_moon_night/hazy_test_output.osu"
 
-    normal_lines, timing_points, notes = read_map(map_path)
-    random_notes = randomize_notes(notes)
+    normal_lines, timing_points, notes = read_map(map_path, key_count)
+    random_notes = randomize_notes(notes, key_count)
 
-    notes_with_chords = add_chords(random_notes)
+    notes_with_chords = add_chords(random_notes, key_count)
 
-    generate_note_matrix(notes_with_chords)
+    generate_note_matrix(notes_with_chords, key_count)
 
     # will probably need later
     # timing_changes = get_timing_changes(timing_points)
