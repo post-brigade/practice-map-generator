@@ -26,7 +26,7 @@ def main():
 
     # random_notes = randomize_notes(notes, key_count)
 
-    random_notes = generate_notes_with_timing_points(timing_changes, notes[-1], key_count)
+    random_notes = generate_notes_with_timing_points(timing_changes, notes, key_count)
     timing_note_groups = group_notes_by_timing_changes(random_notes, timing_changes)
     notes_with_chords = add_chords(random_notes, key_count)
 
