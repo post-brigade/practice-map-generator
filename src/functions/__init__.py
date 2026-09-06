@@ -8,7 +8,7 @@ from .generate_note_matrix import generate_note_matrix
 from .generate_notes_with_timing_points import generate_notes_with_timing_points
 from .get_timing_changes import get_timing_changes
 from .group_notes_by_timing_changes import group_notes_by_timing_changes
-from .map_generation_helpers import create_row, random_column, rgb_to_console_color
+from .note_helpers import column_to_x, random_column
 from .randomize_notes import randomize_notes
 from .read_map import read_map
 from .to_lines import to_lines

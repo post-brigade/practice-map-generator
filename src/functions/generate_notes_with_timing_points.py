@@ -3,7 +3,6 @@ from dis import Instruction
 from src.classes import LongNote, Note, TimingPoint
 
 from .generate_note import generate_note
-from .map_generation_helpers import column_to_x, create_row, rgb_to_console_color
 
 
 def generate_notes_with_timing_points(timing_changes: list[TimingPoint], notes: list[Note], key_count: int):
