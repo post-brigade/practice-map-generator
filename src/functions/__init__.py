@@ -5,9 +5,10 @@ from .create_long_note import create_long_note
 from .create_note import create_note
 from .create_timing_point import create_timing_point
 from .generate_note_matrix import generate_note_matrix
+from .generate_notes_with_timing_points import generate_notes_with_timing_points
 from .get_timing_changes import get_timing_changes
 from .group_notes_by_timing_changes import group_notes_by_timing_changes
-from .map_generation_helpers import create_row, rgb_to_console_color, random_column
+from .map_generation_helpers import create_row, random_column, rgb_to_console_color
 from .randomize_notes import randomize_notes
 from .read_map import read_map
 from .to_lines import to_lines
