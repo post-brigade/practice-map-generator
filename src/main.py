@@ -28,8 +28,8 @@ def main():
     generate_note_matrix(notes_with_chords, key_count)
 
     # will probably need later
-    # timing_changes = get_timing_changes(timing_points)
-    # timing_note_groups = group_notes_by_timing_changes(random_notes, timing_changes)
+    timing_changes = get_timing_changes(timing_points)
+    timing_note_groups = group_notes_by_timing_changes(random_notes, timing_changes)
 
     new_map = build_new_map(normal_lines, timing_points, notes_with_chords)
 
