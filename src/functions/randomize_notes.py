@@ -1,7 +1,6 @@
 from src.classes import LongNote, Note, TimingPoint
 
-from .column_to_x import column_to_x
-from .random_column import random_column
+from .map_generation_helpers import column_to_x, random_column
 
 
 def randomize_notes(notes: list[Note | LongNote], key_count) -> list[Note | LongNote]:

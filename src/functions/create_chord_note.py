@@ -2,8 +2,7 @@ import copy
 
 from src.classes import LongNote, Note
 
-from .column_to_x import column_to_x
-from .random_column import random_column
+from .map_generation_helpers import column_to_x, random_column
 
 
 def create_chord_note(note: Note | LongNote, banned_columns: set[int], key_count = 7) -> Note | LongNote:
